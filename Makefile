@@ -1,13 +1,15 @@
 # Params
 TARGET_NAME:= MyProgram
-SRCS_DIR:= src
+SRCS_DIR?= src
 BUILD_DIR?= .build
-CC=gcc
-CFLAGS= -Wall \
-		-Isrc/mylib
-
+CC:=gcc
 
 # Utils
+include components.mk
+CFLAGS= -Wall \
+		$(addprefix -D,$(DEFINES)) \
+		$(addprefix -I$(SRCS_DIR)/,$(INCLUDES))
+
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 SRCS:= $(call rwildcard,src/,*.c)
 OBJS:= $(addprefix $(BUILD_DIR)/,$(SRCS:.c=.o))
