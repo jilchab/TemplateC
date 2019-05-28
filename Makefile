@@ -11,7 +11,7 @@ CFLAGS= -Wall \
 		$(addprefix -I$(SRCS_DIR)/,$(INCLUDES))
 
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-SRCS:= $(call rwildcard,src/,*.c)
+SRCS:= $(call rwildcard,$(SRCS_DIR)/,*.c)
 OBJS:= $(addprefix $(BUILD_DIR)/,$(SRCS:.c=.o))
 OBJS_DIR:=$(dir $(OBJS))
 TARGET:= $(BUILD_DIR)/$(TARGET_NAME)
