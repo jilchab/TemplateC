@@ -22,7 +22,10 @@ else
 PREF:=@
 endif
 
+.PHONY: all
+
 all: build
+	@echo "$(TARGET_NAME) succesfully compiled. Run make start or ./$(TARGET) to start the program"
 
 build: $(OBJS_DIR) $(TARGET)
 
