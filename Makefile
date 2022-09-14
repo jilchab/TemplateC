@@ -5,7 +5,7 @@ BUILD_DIR?= .build
 CC:=gcc
 
 # Utils
-include components.mk
+include config.mk
 CFLAGS= -Wall \
 		$(addprefix -D,$(DEFINES)) \
 		$(addprefix -I$(SRCS_DIR)/,$(INCLUDES))
@@ -25,7 +25,7 @@ endif
 .PHONY: all
 
 all: build
-	@echo "$(TARGET_NAME) succesfully compiled. Run make start or ./$(TARGET) to start the program"
+	@echo "$(TARGET_NAME) succesfully compiled. Run \"make run\" or ./$(TARGET) to start the program"
 
 build: $(OBJS_DIR) $(TARGET)
 
@@ -49,6 +49,6 @@ clean:
 	@echo "Cleaning"
 	$(PREF)rm -rf $(BUILD_DIR)
 
-start: build
+run: build
 	@echo "Program start..."
 	$(PREF)./$(TARGET)

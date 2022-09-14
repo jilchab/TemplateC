@@ -1,4 +1,0 @@
-DEFINES:=	TEST	\
-			TEST_VAL=5
-
-INCLUDES:= 	mylib
